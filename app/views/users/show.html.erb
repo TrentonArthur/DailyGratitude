@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>User #<%= @user.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Firstname</dt>
+  <dd><%= @user.firstname %></dd>
+
+  <dt>Lastname</dt>
+  <dd><%= @user.lastname %></dd>
+
+  <dt>Email</dt>
+  <dd><%= @user.email %></dd>
+
+  <dt>Password</dt>
+  <dd><%= @user.password %></dd>
+
+<h2>Entries</h2>
+<ul>
+<% @user.entries.each do |entry| %>
+  <li class = "list-group-item"><h4><%= entry.created_at.strftime("%B%e") %> </h4>
+      <a href ="/entries/<%=  entry.id  %>"><%= entry.text %></a></li>
+<% end %>
+</ul>
+
+</dl>

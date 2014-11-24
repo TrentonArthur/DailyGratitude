@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1>Entry #<%= @entry.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Text</dt>
+  <dd><%= @entry.text %></dd>
+
+  <dt>Owner</dt>
+  <dd><%= @entry.owner.firstname %></dd>
+
+  <dt>Image</dt>
+  <dd><%= @entry.image %></dd>
+
+</dl>

@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Share #<%= @share.id %></h1>
+</div>
+
+
+
+<dl class="dl-horizontal">
+  <dt>Share owner</dt>
+  <dd><%= @share.owner.firstname %></dd>
+
+  <dt>Share with</dt>
+  <dd><%= @share.can_view.firstname %></dd>
+
+  <dt>Entry</dt>
+  <dd><%= @share.entry.text %></dd>
+
+</dl>

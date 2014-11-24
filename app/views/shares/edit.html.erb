@@ -1,0 +1,103 @@
+<% if @share.errors.any? %>
+  <% @share.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h1>Edit Share #<%= @share.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_share/<%= @share.id %>" class="form-horizontal">
+      <!-- Label and input for share_owner -->
+      <div class="form-group">
+        <label for="share_owner" class="col-sm-2 control-label">
+          Share owner
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="share_owner" name="share_owner" placeholder="Share owner" class="form-control" value="<%= @share.share_owner %>">
+        </div>
+      </div>
+
+      <!-- Label and input for share_with -->
+      <div class="form-group">
+        <label for="share_with" class="col-sm-2 control-label">
+          Share with
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="share_with" name="share_with" placeholder="Share with" class="form-control" value="<%= @share.share_with %>">
+        </div>
+      </div>
+
+      <!-- Label and input for entry_id -->
+      <div class="form-group">
+        <label for="entry_id" class="col-sm-2 control-label">
+          Entry
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="entry_id" name="entry_id" placeholder="Entry" class="form-control" value="<%= @share.entry_id %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update Share" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Share #<%= @share.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_share/<%= @share.id %>" class="form-horizontal">
+          <!-- Label and input for share_owner -->
+          <div class="form-group">
+            <label for="share_owner" class="col-sm-2 control-label">
+              Share owner
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="share_owner" name="share_owner" placeholder="Share owner" class="form-control" value="<%= @share.share_owner %>">
+            </div>
+          </div>
+
+          <!-- Label and input for share_with -->
+          <div class="form-group">
+            <label for="share_with" class="col-sm-2 control-label">
+              Share with
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="share_with" name="share_with" placeholder="Share with" class="form-control" value="<%= @share.share_with %>">
+            </div>
+          </div>
+
+          <!-- Label and input for entry_id -->
+          <div class="form-group">
+            <label for="entry_id" class="col-sm-2 control-label">
+              Entry
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="entry_id" name="entry_id" placeholder="Entry" class="form-control" value="<%= @share.entry_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update Share" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
