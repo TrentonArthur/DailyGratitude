@@ -12,4 +12,11 @@
   <dt>Image</dt>
   <dd><%= @entry.image %></dd>
 
+<h2>Who can view this entry</h2>
+<ul>
+<% @entry.can_views.each do |viewer| %>
+  <li class = "list-group-item">
+      <a href ="/users/<%=  viewer.id  %>"><%= viewer.firstname %></a></li>
+<% end %>
+</ul>
 </dl>

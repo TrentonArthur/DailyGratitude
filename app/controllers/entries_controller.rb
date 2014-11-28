@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   def index
     @entries = Entry.all
+    #@entries = current_user.entries
   end
 
   def show
@@ -14,7 +15,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new
     @entry.text = params[:text]
-    @entry.owner_id = params[:owner_id]
+    @entry.owner_id = current_user.id
     @entry.image = params[:image]
 
     if @entry.save

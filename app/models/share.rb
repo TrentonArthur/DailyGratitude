@@ -4,6 +4,7 @@ class Share < ActiveRecord::Base
   validates :entry_id, :uniqueness => {:scope => :share_with}
 
 
+
   belongs_to(:owner, { :class_name => "User", :foreign_key => "share_owner" })
       validates :share, :presence => true
 
@@ -13,5 +14,6 @@ class Share < ActiveRecord::Base
 
   belongs_to(:entry, { :class_name => "Entry", :foreign_key => "entry_id" })
       validates :entry, :presence => true
+
 
 end

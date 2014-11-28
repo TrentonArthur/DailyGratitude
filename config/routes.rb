@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root "entries#index"
+
   # Routes for the User resource:
   # CREATE
   get('/users/new', { :controller => 'users', :action => 'new' })
