@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user.password = params[:password]
 
     if @user.save
-      redirect_to "/users", :notice => "User created successfully."
+      redirect_to "/", :notice => "User created successfully."
     else
       render 'new'
     end

@@ -18,7 +18,7 @@ class SharesController < ApplicationController
     @share.entry_id = params[:entry_id]
 
     if @share.save
-      redirect_to "/shares", :notice => "Share created successfully."
+      redirect_to root_path, :notice => "Share created successfully."
     else
       render 'new'
     end

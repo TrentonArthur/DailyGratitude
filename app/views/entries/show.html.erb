@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Entry #<%= @entry.id %></h1>
+  <h1><%= @entry.created_at.strftime("%b %d, %Y") %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -10,13 +10,63 @@
   <dd><%= @entry.owner.firstname %></dd>
 
   <dt>Image</dt>
-  <dd><%= @entry.image %></dd>
+  <dd><img src="<%= @entry.image %>" ></dd>
 
-<h2>Who can view this entry</h2>
-<ul>
-<% @entry.can_views.each do |viewer| %>
-  <li class = "list-group-item">
-      <a href ="/users/<%=  viewer.id  %>"><%= viewer.firstname %></a></li>
-<% end %>
-</ul>
+ <% if current_user.id == @entry.owner_id %>
+<h4>Who can view this entry? </h4>
+    <ul>
+    <% @entry.can_views.each do |viewer| %>
+      <li class = "list-group-item">
+          <%= viewer.firstname %></li>
+    <% end %>
+    </ul>
+
+
+    <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Share this entry with someone</h3>
+        </div>
+        <div class="panel-body">
+          <form action="/create_share" class="form-horizontal">
+            <!-- Label and input for share_owner -->
+            <div class="form-group">
+
+              <div class="col-sm-10">
+                <input type="hidden" name ="share_owner" value="<%= current_user.id %>">
+
+
+              </div>
+            </div>
+
+            <!-- Label and input for share_with -->
+            <div class="form-group">
+              <label for="share_with" class="col-sm-2 control-label">
+                Share with
+              </label>
+              <div class="col-sm-10">
+                <%= select_tag(:share_with, options_from_collection_for_select(User.all, :id, :firstname), :class => "form-control") %>
+              </div>
+            </div>
+
+            <!-- Label and input for entry_id -->
+            <div class="form-group">
+              <div class="col-sm-10">
+              <input type="hidden" name ="entry_id" value="<%= @entry.id %>">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Create Share" class="btn btn-primary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
 </dl>

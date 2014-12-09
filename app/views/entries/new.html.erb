@@ -7,16 +7,13 @@
   <% end %>
 <% end %>
 
-<div class="page-header">
-  <h1>Add Entry</h1>
-</div>
 
 
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Add Entry</h3>
+        <h3 class="panel-title">What happened today?</h3>
       </div>
       <div class="panel-body">
         <form action="/create_entry" class="form-horizontal">
@@ -30,18 +27,9 @@
             </div>
           </div>
 
-          <!-- Label and input for owner_id -->
-          <div class="form-group">
-            <label for="owner_id" class="col-sm-2 control-label">
-              Owner
-            </label>
-            <div class="col-sm-10">
-             <%#= select_tag(:owner_id, options_from_collection_for_select(User.all, :id, :firstname), :class => "form-control") %>
 
-            <input type="hidden" name ="owner_id" value="<%= current_user.id %>">
-             <!--  <input type="text" id="owner_id" name="owner_id" placeholder="Owner" class="form-control" value="<%= @entry.owner_id %>"> -->
-            </div>
-          </div>
+            <input type="hidden" name ="share_owner" value="<%= current_user.id %>">
+
 
           <!-- Label and input for image -->
           <div class="form-group">
@@ -55,7 +43,7 @@
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Create Entry" class="btn btn-primary">
+              <input type="submit" value="Add Entry" class="btn btn-primary">
             </div>
           </div>
         </form>

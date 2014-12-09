@@ -1,44 +1,82 @@
 <div class="page-header">
-  <h1>Entries</h1>
+  <h1>Memories</h1>
 </div>
 
 <p><a href="/entries/new" class="btn btn-primary">Add a New Entry</a></p>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>Owner</th>
-      <th>Image</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.text %></td>
-        <td><%= entry.owner.firstname %></td>
-        <td><%= entry.image %></td>
-        <td>
-          <a href="/entries/<%= entry.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-        </td>
-        <td>
-          <a href="/entries/<%= entry.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-        </td>
-        <td>
-          <a href="/delete_entry/<%= entry.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-6">
+    <h3> Your Memories </h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>Image</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><h5><%= entry.created_at.strftime("%b %d, %Y") %> </h5><%= entry.text %></td>
+            <td><img src="<%= entry.image %>" width="100px" ></td>
+            <td>
+              <a href="/entries/<%= entry.id %>" class="btn btn-primary">
+                <i class="fa fa-search-plus"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/entries/<%= entry.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/delete_entry/<%= entry.id %>" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-md-6">
+      <h3> Memories shared with you </h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>Shared by</th>
+          <th>Image</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @shareentries.present? %>
+            <% @shareentries.each do |share| %>
+              <% if share.entry.present?  && share.entry.owner.present?%>
+              <tr>
+                <td ><h5><%= share.entry.created_at.strftime("%b %d, %Y") %> </h5><a href="/entries/<%= share.entry.id %>" ><%= share.entry.text %> </a></td>
+                 <td><%= share.entry.owner.firstname %></td>
+                <td><img width = "100px" src="<%= share.entry.image %>"></td>
+                <td>
+
+
+                </td>
+
+              </tr>
+              <%end %>
+            <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

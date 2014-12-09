@@ -6,14 +6,15 @@ class Share < ActiveRecord::Base
 
 
   belongs_to(:owner, { :class_name => "User", :foreign_key => "share_owner" })
-      validates :share, :presence => true
+      validates :owner, :presence => true
 
 
   belongs_to(:can_view, { :class_name => "User", :foreign_key => "share_with" })
-    validates :can_view, :presence => true
+   validates :can_view, :presence => true
 
   belongs_to(:entry, { :class_name => "Entry", :foreign_key => "entry_id" })
       validates :entry, :presence => true
+
 
 
 end
