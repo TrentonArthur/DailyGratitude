@@ -22,7 +22,14 @@
       <tbody>
         <% @entries.each do |entry| %>
           <tr>
-            <td><h5><%= entry.created_at.strftime("%b %d, %Y") %> </h5><%= entry.text %></td>
+            <td><h5><%= entry.created_at.strftime("%b %d, %Y") %> </h5>
+              <a href="/entries/<%= entry.id %>">
+              <h6>
+                <%= entry.text %>
+                </h6></a>
+            </td>
+
+
             <td><img src="<%= entry.image %>" width="100px" ></td>
             <td>
               <a href="/entries/<%= entry.id %>" class="btn btn-primary">
@@ -63,13 +70,19 @@
             <% @shareentries.each do |share| %>
               <% if share.entry.present?  && share.entry.owner.present?%>
               <tr>
-                <td ><h5><%= share.entry.created_at.strftime("%b %d, %Y") %> </h5><a href="/entries/<%= share.entry.id %>" ><%= share.entry.text %> </a></td>
+                <td >
+                  <h5>
+                    <%= share.entry.created_at.strftime("%b %d, %Y") %>
+                  </h5>
+                  <h6>
+                    <a href="/entries/<%= share.entry.id %>">
+                      <%= share.entry.text %>
+                  </h6>
+                    </a>
+                </td>
                  <td><%= share.entry.owner.firstname %></td>
                 <td><img width = "100px" src="<%= share.entry.image %>"></td>
-                <td>
 
-
-                </td>
 
               </tr>
               <%end %>

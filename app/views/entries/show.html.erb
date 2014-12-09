@@ -15,9 +15,13 @@
  <% if current_user.id == @entry.owner_id %>
 <h4>Who can view this entry? </h4>
     <ul>
-    <% @entry.can_views.each do |viewer| %>
-      <li class = "list-group-item">
-          <%= viewer.firstname %></li>
+    <% @entry.can_views.each do |viewer|  %>
+      <% share_id = @entry.shares.select{|share| share.share_with == viewer.id}.first.id %>
+       <li class = "list-group-item">
+          <%= viewer.firstname %>
+           <a href="/delete_share/<%= share_id %>" class="btn btn-danger">
+               <i class="fa fa-trash-o"></i></a>
+          </li>
     <% end %>
     </ul>
 

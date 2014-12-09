@@ -11,4 +11,5 @@ class Entry < ActiveRecord::Base
     #has_many(:viewers, {:class_name => "User", :foreign_key =>"share_with"}), :through (:shares, {:class_name => "Share", :foreign_key =>"entry_id"})
 
     has_many :can_views, :through => :shares
+
 end

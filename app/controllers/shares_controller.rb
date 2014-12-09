@@ -47,6 +47,6 @@ class SharesController < ApplicationController
 
     @share.destroy
 
-    redirect_to "/shares", :notice => "Share deleted."
+    redirect_to "/", :notice => "Share deleted."
   end
 end
